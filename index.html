@@ -1,0 +1,136 @@
+<html><head><meta name="viewport" content="width=device-width, initial-scale=1"><link href=//fonts.googleapis.com/css?family=Raleway:400,300,600 rel=stylesheet type=text/css><link rel="stylesheet" type="text/css" href="../common/css/normalize.css"><link rel="stylesheet" type="text/css" href="../common/css/skeleton.css"><link rel="stylesheet" type="text/css" href="../common/css/wiki.css"><script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script><title>Ethernet Shield V2.0</title><meta charset="utf-8"/></head><body><div class"container"><a href="../"><img src="../common/logo.png"/></a></div><div class="mw-content-ltr container" dir="ltr" id="mw-content-text" lang="en"><h1>Ethernet Shield V2.0</h1>
+
+<p>Your Ethernet Shield gets a total renewal now! This shield provides you instant Internet connectivity with a high spec Ethernet controller, W5200, with twice the buffer size of v1.0 and support for up to eight simultaneous TCP/UDP connections. An included SD slot enables applications that require storing large amounts of data, like IoT data logging. Thanks to a lowered RJ45 pot, you can flexibly add most of shields on top of this Ethernet Shield. <br/>
+</p><p><b>Model:</b> <a href="http://www.seeedstudio.com/depot/w5200-ethernet-shield-p-1577.html">SLD91000P</a>
+</p><p><br/><img src="img/IMG_0042.jpg" width="500"/><br/>
+</p>
+<h2>  Features  </h2>
+<ul><li>  High speed Ethernet controller W5200
+</li></ul>
+<ul><li>  SPI interface
+</li></ul>
+<ul><li>  32 Kbytes inner buffer
+</li></ul>
+<ul><li>  Minimal RJ45 Ethernet port
+</li></ul>
+<ul><li>  Support up to eight simultaneous TCP/UDP connections
+</li></ul>
+<ul><li>  Handy SD card function
+</li></ul>
+<ul><li>  Grove ports for I2C and UART preformed
+</li></ul>
+<p><br/>
+<br/>
+</p>
+<h2>  Interface  </h2>
+<p><br/><img src="img/Ethernet_Interface.jpg" width="793"/><br/>
+</p><p><b>Hardware Configuration</b>
+</p><p>RJ45: Ethernet Port; 
+</p><p>IC HX1198: 10/100BASE-T signal port; 
+</p><p>IC W5200: a hardwired TCP/IP Ethernet Controller; 
+</p><p>U3: IC CJ117, low dropout linear regulator; 
+</p><p>U6: IC 74VHC125PW, quad buffer; 
+</p><p>Reset KEY: Reset Ethernet shield and Arduino when pressed; 
+</p><p>SD card: support Micro SD card in FAT16 or FAT32; maximum storage is 2GB. 
+</p><p><b>Pins usage on Arduino</b>
+</p><p>D4: SD card chip select
+</p><p>D10: W5200 Chip Select 
+</p><p>D11: SPI MOSI 
+</p><p>D12: SPI MISO 
+</p><p>D13: SPI SCK 
+</p><p><u><i>Notice:</i></u>
+</p><p>Both W5200 and SD card communicate with Arduino via SPI bus. Pin 10 and pin 4 are chip select pins for W5200 and SD slot. They cannot be used as general I/O.
+</p>
+<h2>  Usage  </h2>
+<p>We are going to build a simple web server that answer request from a client and store the readings from A0 through A5 to SD card.<br/>
+</p><p><b>Step 1: Hookup</b>
+</p><p>1. Mount Ethernet Shield v2.0 to your Arduino; 
+</p><p>2. Connect the shield to your computer or a network hub or a router with a standard Ethernet cable; 
+</p><p>3. Connect Arduino to PC via USB cable; 
+</p><p>4. Insert an SD card to the SD card slot. 
+</p><p><img src="img/IMG_0039.jpg" width="500"/>
+</p><p><b>Step 2: Upload the program</b>
+</p><p>1. Download the library：<a href="https://github.com/Seeed-Studio/Ethernet_Shield_W5200">Ethernet Shield V2.0 Library</a>  
+Note: Depreciated/Old Library for 1.0.x IDE: <a href="res/W5200_Ethernet_Shield_Library.zip">Link</a>. 
+</p><p>2. Unzip and put it in the libraries file of Arduino IDE by the path: ..\arduino-1.0.1\libraries. 
+</p><p>3. Restart the Arduino IDE. 
+</p><p>4. Open the example "WebServerWithSD" via the path: File --&gt; Examples --&gt; EthernetV2.0 --&gt; WebServerWithSD.  This example shows you how to build up a simple web server that displays the readings of anolog A0 through A5 when requested. After that, store those readings into SD card. <br/>
+</p><p><u><i>Note</i></u><i>:</i>
+</p><p>This new library covers all functions included in the build-in Ethernet library of Arduino IDE. You can use other examples in the same way as that in the preceding Ethernet library.  
+</p><p>5. Upload the program to Arduino. If you do not know how to upload code, please click here. 
+</p><p><br/><img src="img/Open_WebSeverWithSD_code.jpg" width="496"/><br/>
+</p><p>In this code ,we have defined pin 4 as SD card  chip select port and pin 10 as W5200 chip select port. 
+</p><p>Firstly, it will send a link to this client if there is a client requesting access to this server.Then send the value of each analog input pin to the network. 
+</p><p>Finally you can view each analog pin by opening SD Card file.<br/>
+</p><p><br/>
+</p><p><b>Step 3: Results</b>
+</p><p>Open a web browser and enter the IP address of your controller. It's dependent on your local network but used to be 192.168.168.178. Then you should find the readings of A0 through A5 popping up as shown below. 
+</p><p><img src="img/Ethernet_Score.jpg" width="436"/> <br/>
+</p><p>To check what's going on to the SD card, open the serial monitor. You can use the built-in serial monitor of Arduino IDE or a serial monitor tool as us. After opening a serial monitor, you can read the content of file "test.txt" which we created to store the readings of analog pins.<br/>
+</p><p><img src="img/WebServerWithSD_Result.jpg" width="546"/><br/>
+</p><p><u>Notice:</u><br/>1） Make sure the Ethernet Shield and your computer are in the same local network.<br/>2） Once the code has been successfully uploaded, it's fine to disconnect the board from your computer and apply independent power to it, leaving it run alone. <br/>
+</p>
+<h2>  Resource  </h2>
+<p><a href="https://github.com/Seeed-Studio/Ethernet_Shield_W5200">Ethernet Shield V2.0 Library</a>
+</p><p><a href="res/W5200_Ethernet_Shield_Library.zip">Depreciated/Old Version of Ethernet Shield V2.0 Library</a>
+</p><p><a href="res/W5200_Ethernet_Shield_eagle_files.zip">Ethernet Shield V2.0 eagle files</a>
+</p><p><a href="res/W5200_Datasheet.pdf">W5200 Datasheet.pdf</a>
+</p><p><a href="res/Ethernet_Shield_v2.0_Schemtic.pdf">Ethernet Shield v2.0 Schemtic</a>
+</p><p><br/>
+</p>
+<h2>  Related Projects </h2>
+<p>It's a pity that we don't have any demo about Ethernet Shield in the <a href="http://www.seeedstudio.com/recipe/">Recipe</a> yet. 
+</p><p>Post your awesome project about Ethernet Shield to <font color="#FF0000">win $100 Coupon!</font> Please feel free to contact us: <a href="mailto:recipe@seeed.cc">recipe@seeed.cc</a>
+</p><p><br/>
+Here we introduce some projects about <a href="http://www.seeedstudio.com/depot/LinkIt-ONE-p-2017.html">LinkIt ONE</a>.
+</p>
+<h3> What is LinkIt ONE</h3>
+<p><img src="img/Linkit-one-page.jpg" width="600"/>
+</p><p>The LinkIt ONE development board is an open source, high performance board for prototyping Wearables and IoT devices. 
+</p><p>It's based on the world's leading SoC for Wearables, MediaTek Aster (MT2502) combined with high performance Wi-Fi (MT5931) 
+</p><p>and GPS (MT3332) chipsets to provide you with access to all the features of MediaTek LinkIt. 
+</p><p>It also provides similar pin-out features to Arduino boards, making it easy for you to connect to various sensors, peripherals, and Arduino shields.
+</p><p><br/>
+</p>
+<h3> LinkIt ONE IoT Demo</h3>
+<p><img src="img/Seeed-recipe-77-20141020151546.jpg" width="600"/>
+</p><p>This is an IoT demo make by LinkIt ONE.
+</p><p>With this demo, we can:
+</p>
+<ul><li> Display household temperautre, humidity, luminosity, volume control data collection on OLED screen
+</li></ul>
+<ul><li> Cloud service, data uploaded to Cloud platform Xively, real-time monitoring
+</li></ul>
+<ul><li> Data retention for reviewing how data changes over time
+</li></ul>
+<ul><li> Remote control Household Appliances by sending a message
+</li></ul>
+<ul><li> Table Lamp, 3D Printing, controlled by your phone
+</li></ul>
+<p><br/>
+<a href="http://www.seeedstudio.com/recipe/77-linkit-one-iot-demo.html"><b>I want to make it</b></a>.
+</p><p><br/>
+</p>
+<h3> Pringles Can antenna with a LinkIt ONE</h3>
+<p><img src="img/5515ae26588ec.jpg" width="600"/>
+</p><p>Make a focused antenna with a pringles can.
+</p><p><a href="http://www.seeedstudio.com/recipe/177-pringles-can-antenna-with-a-linkit-one.html"><b>I want to make it.</b></a>
+</p><p><a href="http://www.seeedstudio.com/recipe/index.php?m=Home&amp;controller=Recipe&amp;action=productDetail&amp;id=2"><b>More Awesome Projects by LinkIt ONE</b></a>
+</p><p><br/>
+<br/>
+</p>
+<h3>  Share Your Awesome Projects with Us </h3>
+<p>Born with the spirit of making and sharing, that is what we believe makes a maker. 
+</p><p>And only because of this, the open source community can be as prosperous as it is today.
+</p><p>It does not matter what you are and what you have made, hacker, maker, artist or engineers.
+</p><p>As long as you start sharing your works with others, you are being part of the open source community and you are making your contributions.
+</p><p>Now share your awesome projects with us on <a href="http://www.seeedstudio.com/recipe/">Recipe</a>, and win a chance to become the Core User of Seeed.
+</p>
+<ul><li> Core Users, are those who show high interests in Seeed products and make significant contributions on Recipe. 
+</li><li> We cooperate with our Core Users in the development of our new product, this, in another word, the Core Users will have the chance to experience any new products of Seeed before its official launch, and in return we expect valuable feedback from them to help us improve the product performance and user experience. And in most cases when our Core Users have some good ideas of making things, we'll offer hardware pieces, PCBA services as well as technical support. Besides, further commercial cooperation with the Core Users is highly possible.
+</li></ul>
+<p><font color="#FF0000">Get more information about Core User please email to:</font> <a href="mailto:recipe@seeed.cc">recipe@seeed.cc</a>
+</p><p><br/>
+<br/>
+</p>
+Copyright (c) 2008-2016 Seeed Development Limited (<a href="http://www.seeedstudio.com">www.seeedstudio.com</a> / <a href="http://www.seeed.cc">www.seeed.cc</a>)<h6>This static html page was created from http://www.seeedstudio.com/wiki</h6></div></body></html>
